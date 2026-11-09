@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bttefagbr8dns"]
+
+[ext_resource type="Script" uid="uid://cwodnlt14gtry" path="res://materials/units/unit0/unit_0.gd" id="1_dfx5d"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3qttg"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_frbq0"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_dfx5d"]
+inner_radius = 0.7
+outer_radius = 0.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dfx5d"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_3qttg"]
+
+[node name="Unit0" type="CharacterBody3D" unique_id=1377176289 groups=["units"]]
+script = ExtResource("1_dfx5d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=153260117]
+shape = SubResource("CapsuleShape3D_3qttg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=484976011]
+mesh = SubResource("CapsuleMesh_frbq0")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1219238708]
+
+[node name="SelectionRing" type="MeshInstance3D" parent="." unique_id=593489714]
+mesh = SubResource("TorusMesh_dfx5d")
+
+[node name="PathLine" type="MeshInstance3D" parent="." unique_id=647730492]
+material_overlay = SubResource("StandardMaterial3D_dfx5d")
+mesh = SubResource("ImmediateMesh_3qttg")

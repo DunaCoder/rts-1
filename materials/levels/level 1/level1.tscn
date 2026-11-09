@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://l3flis1ubxm0"]
+
+[ext_resource type="Script" uid="uid://dnl1oi5u4fydo" path="res://materials/levels/level 1/level_1.gd" id="1_iknff"]
+[ext_resource type="PackedScene" uid="uid://bttefagbr8dns" path="res://materials/units/unit0/unit0.tscn" id="2_ii2lp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cg16n"]
+
+[sub_resource type="Sky" id="Sky_5tuq8"]
+sky_material = SubResource("ProceduralSkyMaterial_cg16n")
+
+[sub_resource type="Environment" id="Environment_iknff"]
+background_mode = 2
+sky = SubResource("Sky_5tuq8")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ii2lp"]
+size = Vector3(25.977966, 0.6000366, 18.616455)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_exerc"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_2fvln"]
+geometry_parsed_geometry_type = 0
+
+[node name="Level1" type="Node3D" unique_id=100371293]
+script = ExtResource("1_iknff")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=996398975]
+environment = SubResource("Environment_iknff")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=705921831]
+transform = Transform3D(1, 0, 0, 0, 0.9500483, 0.3121028, 0, -0.3121028, 0.9500483, 0, 6.7056603, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=954585824]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2033999208]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08999634, 0.82270527, 0.28308105)
+shape = SubResource("BoxShape3D_ii2lp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=209036544]
+transform = Transform3D(12.980449, 0, 0, 0, 1.3628545, 0, 0, 0, 9.8789, 0, 0.52463245, 0)
+mesh = SubResource("PlaneMesh_exerc")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=143213633]
+navigation_mesh = SubResource("NavigationMesh_2fvln")
+
+[node name="Unit0" parent="." unique_id=1377176289 instance=ExtResource("2_ii2lp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1758661, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=714449120]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 15, 17.441023)
+fov = 42.3
